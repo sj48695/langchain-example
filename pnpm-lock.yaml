@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@langchain/community':
         specifier: ^0.3.26
-        version: 0.3.26(@browserbasehq/sdk@2.0.0)(@browserbasehq/stagehand@1.10.1(@playwright/test@1.50.0)(deepmerge@4.3.1)(dotenv@16.4.7)(openai@4.80.0(ws@8.18.0)(zod@3.24.1))(zod@3.24.1))(@ibm-cloud/watsonx-ai@1.3.2(@langchain/core@0.3.33(openai@4.80.0(ws@8.18.0)(zod@3.24.1))))(@langchain/core@0.3.33(openai@4.80.0(ws@8.18.0)(zod@3.24.1)))(axios@1.7.4)(cheerio@1.0.0)(ibm-cloud-sdk-core@5.1.1)(jsonwebtoken@9.0.2)(openai@4.80.0(ws@8.18.0)(zod@3.24.1))(playwright@1.50.0)(ws@8.18.0)
+        version: 0.3.26(@browserbasehq/sdk@2.0.0)(@browserbasehq/stagehand@1.10.1(@playwright/test@1.50.0)(deepmerge@4.3.1)(dotenv@16.4.7)(openai@4.80.0(ws@8.18.0)(zod@3.24.1))(zod@3.24.1))(@ibm-cloud/watsonx-ai@1.3.2(@langchain/core@0.3.33(openai@4.80.0(ws@8.18.0)(zod@3.24.1))))(@langchain/core@0.3.33(openai@4.80.0(ws@8.18.0)(zod@3.24.1)))(axios@1.7.4)(cheerio@1.0.0)(ibm-cloud-sdk-core@5.1.1)(ioredis@5.4.2)(jsonwebtoken@9.0.2)(openai@4.80.0(ws@8.18.0)(zod@3.24.1))(playwright@1.50.0)(ws@8.18.0)
       '@langchain/core':
         specifier: ^0.3.33
         version: 0.3.33(openai@4.80.0(ws@8.18.0)(zod@3.24.1))
@@ -29,9 +29,18 @@ importers:
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
+      ioredis:
+        specifier: ^5.4.2
+        version: 5.4.2
       langchain:
         specifier: ^0.3.12
         version: 0.3.12(@langchain/core@0.3.33(openai@4.80.0(ws@8.18.0)(zod@3.24.1)))(axios@1.7.4)(cheerio@1.0.0)(openai@4.80.0(ws@8.18.0)(zod@3.24.1))(ws@8.18.0)
+      uuid:
+        specifier: ^11.0.5
+        version: 11.0.5
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.1
 
 packages:
 
@@ -164,6 +173,9 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [win32]
+
+  '@ioredis/commands@1.2.0':
+    resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
 
   '@langchain/community@0.3.26':
     resolution: {integrity: sha512-aZjB2lMuHAeEEkM38GFYxUpTBA319GtGsO6t8+KxjsXzkxhwL/nJvEjCoTmoYkAEMI9u6NYksr8D0Urw+Oq27g==}
@@ -658,6 +670,10 @@ packages:
     resolution: {integrity: sha512-quS9HgjQpdaXOvsZz82Oz7uxtXiy6UIsIQcpBj7HRw2M63Skasm9qlDocAM7jNuaxdhpPU7c4kJN+gA5MCu4ww==}
     engines: {node: '>=18.17'}
 
+  cluster-key-slot@1.1.2:
+    resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
+    engines: {node: '>=0.10.0'}
+
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
     engines: {node: '>=7.0.0'}
@@ -706,6 +722,10 @@ packages:
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
+
+  denque@2.1.0:
+    resolution: {integrity: sha512-HVQE3AAb/pxF8fQAoiqpvg9i3evqug3hoiwakOyZAwJm+6vZehbkYXZ0l4JxS+I3QxM97v5aaRNhj8v5oBhekw==}
+    engines: {node: '>=0.10'}
 
   detect-libc@2.0.3:
     resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
@@ -812,6 +832,10 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
+  ioredis@5.4.2:
+    resolution: {integrity: sha512-0SZXGNGZ+WzISQ67QDyZ2x0+wVxjjUndtD8oSeik/4ajifeiRufed8fCb8QW8VMyi4MXcS+UO1k/0NGhvq1PAg==}
+    engines: {node: '>=12.22.0'}
+
   is-arrayish@0.3.2:
     resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
 
@@ -899,8 +923,14 @@ packages:
       openai:
         optional: true
 
+  lodash.defaults@4.2.0:
+    resolution: {integrity: sha512-qjxPLHd3r5DnsdGacqOMU6pb/avJzdh9tFX2ymgoZE27BmjXrNy/y4LoaiTeAb+O3gL8AfpJGtqfX/ae2leYYQ==}
+
   lodash.includes@4.3.0:
     resolution: {integrity: sha512-W3Bx6mdkRTGtlJISOvVD/lbqjTlPPUDTMnlXZFnVwi9NKJ6tiAk6LVdlhZMm17VZisqhKcgzpO5Wz91PCt5b0w==}
+
+  lodash.isarguments@3.1.0:
+    resolution: {integrity: sha512-chi4NHZlZqZD18a0imDHnZPrDeBbTtVN7GXMwuGdRH9qotxAjYs3aVLKc7zNOG9eddR5Ksd8rvFEBc9SsggPpg==}
 
   lodash.isboolean@3.0.3:
     resolution: {integrity: sha512-Bz5mupy2SVbPHURB98VAcw+aHh4vRV5IPNhILUCsOzRmsTmSQ17jIuqopAentWoehktxGd9e/hbIXq980/1QJg==}
@@ -1026,6 +1056,14 @@ packages:
     resolution: {integrity: sha512-ePeK6cc1EcKLEhJFt/AebMCLL+GgSKhuygrZ/GLaKZYEecIgIECf4UaUuaByiGtzckwR4ain9VzUh95T1exYGw==}
     engines: {node: '>=8'}
 
+  redis-errors@1.2.0:
+    resolution: {integrity: sha512-1qny3OExCf0UvUV/5wpYKf2YwPcOqXzkwKKSmKHiE6ZMQs5heeE/c8eXK+PNllPvmjgAbfnsbpkGZWy8cBpn9w==}
+    engines: {node: '>=4'}
+
+  redis-parser@3.0.0:
+    resolution: {integrity: sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A==}
+    engines: {node: '>=4'}
+
   requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
 
@@ -1059,6 +1097,9 @@ packages:
 
   simple-wcswidth@1.0.1:
     resolution: {integrity: sha512-xMO/8eNREtaROt7tJvWJqHBDTMFN4eiQ5I4JRMuilwfnFcV5W9u7RUkueNkdw0jPqGMX36iCywelS5yilTuOxg==}
+
+  standard-as-callback@2.1.0:
+    resolution: {integrity: sha512-qoRRSyROncaz1z0mvYqIE4lCd9p2R90i6GxW3uZv5ucSu8tU7B5HXUP1gG8pVZsYNVaXjk8ClXHPttLyxAL48A==}
 
   string_decoder@1.3.0:
     resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==}
@@ -1104,6 +1145,10 @@ packages:
 
   uuid@10.0.0:
     resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+    hasBin: true
+
+  uuid@11.0.5:
+    resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
     hasBin: true
 
   uuid@9.0.1:
@@ -1288,7 +1333,9 @@ snapshots:
   '@img/sharp-win32-x64@0.33.5':
     optional: true
 
-  '@langchain/community@0.3.26(@browserbasehq/sdk@2.0.0)(@browserbasehq/stagehand@1.10.1(@playwright/test@1.50.0)(deepmerge@4.3.1)(dotenv@16.4.7)(openai@4.80.0(ws@8.18.0)(zod@3.24.1))(zod@3.24.1))(@ibm-cloud/watsonx-ai@1.3.2(@langchain/core@0.3.33(openai@4.80.0(ws@8.18.0)(zod@3.24.1))))(@langchain/core@0.3.33(openai@4.80.0(ws@8.18.0)(zod@3.24.1)))(axios@1.7.4)(cheerio@1.0.0)(ibm-cloud-sdk-core@5.1.1)(jsonwebtoken@9.0.2)(openai@4.80.0(ws@8.18.0)(zod@3.24.1))(playwright@1.50.0)(ws@8.18.0)':
+  '@ioredis/commands@1.2.0': {}
+
+  '@langchain/community@0.3.26(@browserbasehq/sdk@2.0.0)(@browserbasehq/stagehand@1.10.1(@playwright/test@1.50.0)(deepmerge@4.3.1)(dotenv@16.4.7)(openai@4.80.0(ws@8.18.0)(zod@3.24.1))(zod@3.24.1))(@ibm-cloud/watsonx-ai@1.3.2(@langchain/core@0.3.33(openai@4.80.0(ws@8.18.0)(zod@3.24.1))))(@langchain/core@0.3.33(openai@4.80.0(ws@8.18.0)(zod@3.24.1)))(axios@1.7.4)(cheerio@1.0.0)(ibm-cloud-sdk-core@5.1.1)(ioredis@5.4.2)(jsonwebtoken@9.0.2)(openai@4.80.0(ws@8.18.0)(zod@3.24.1))(playwright@1.50.0)(ws@8.18.0)':
     dependencies:
       '@browserbasehq/stagehand': 1.10.1(@playwright/test@1.50.0)(deepmerge@4.3.1)(dotenv@16.4.7)(openai@4.80.0(ws@8.18.0)(zod@3.24.1))(zod@3.24.1)
       '@ibm-cloud/watsonx-ai': 1.3.2(@langchain/core@0.3.33(openai@4.80.0(ws@8.18.0)(zod@3.24.1)))
@@ -1308,6 +1355,7 @@ snapshots:
     optionalDependencies:
       '@browserbasehq/sdk': 2.0.0
       cheerio: 1.0.0
+      ioredis: 5.4.2
       jsonwebtoken: 9.0.2
       playwright: 1.50.0
       ws: 8.18.0
@@ -1475,6 +1523,8 @@ snapshots:
       undici: 6.21.1
       whatwg-mimetype: 4.0.0
 
+  cluster-key-slot@1.1.2: {}
+
   color-convert@2.0.1:
     dependencies:
       color-name: 1.1.4
@@ -1518,6 +1568,8 @@ snapshots:
   deepmerge@4.3.1: {}
 
   delayed-stream@1.0.0: {}
+
+  denque@2.1.0: {}
 
   detect-libc@2.0.3: {}
 
@@ -1635,6 +1687,20 @@ snapshots:
 
   inherits@2.0.4: {}
 
+  ioredis@5.4.2:
+    dependencies:
+      '@ioredis/commands': 1.2.0
+      cluster-key-slot: 1.1.2
+      debug: 4.4.0
+      denque: 2.1.0
+      lodash.defaults: 4.2.0
+      lodash.isarguments: 3.1.0
+      redis-errors: 1.2.0
+      redis-parser: 3.0.0
+      standard-as-callback: 2.1.0
+    transitivePeerDependencies:
+      - supports-color
+
   is-arrayish@0.3.2: {}
 
   isstream@0.1.2: {}
@@ -1708,7 +1774,11 @@ snapshots:
     optionalDependencies:
       openai: 4.80.0(ws@8.18.0)(zod@3.24.1)
 
+  lodash.defaults@4.2.0: {}
+
   lodash.includes@4.3.0: {}
+
+  lodash.isarguments@3.1.0: {}
 
   lodash.isboolean@3.0.3: {}
 
@@ -1818,6 +1888,12 @@ snapshots:
     dependencies:
       readable-stream: 3.6.2
 
+  redis-errors@1.2.0: {}
+
+  redis-parser@3.0.0:
+    dependencies:
+      redis-errors: 1.2.0
+
   requires-port@1.0.0: {}
 
   retry-axios@2.6.0(axios@1.7.4(debug@4.4.0)):
@@ -1864,6 +1940,8 @@ snapshots:
 
   simple-wcswidth@1.0.1: {}
 
+  standard-as-callback@2.1.0: {}
+
   string_decoder@1.3.0:
     dependencies:
       safe-buffer: 5.2.1
@@ -1908,6 +1986,8 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   uuid@10.0.0: {}
+
+  uuid@11.0.5: {}
 
   uuid@9.0.1: {}
 

@@ -7,6 +7,9 @@
     "@langchain/textsplitters": "^0.1.0",
     "cheerio": "^1.0.0",
     "dotenv": "^16.4.7",
-    "langchain": "^0.3.12"
+    "ioredis": "^5.4.2",
+    "langchain": "^0.3.12",
+    "uuid": "^11.0.5",
+    "zod": "^3.24.1"
   }
 }
