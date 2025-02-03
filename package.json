@@ -4,11 +4,14 @@
     "@langchain/core": "^0.3.33",
     "@langchain/langgraph": "^0.2.41",
     "@langchain/openai": "^0.3.17",
+    "@langchain/redis": "^0.1.0",
     "@langchain/textsplitters": "^0.1.0",
     "cheerio": "^1.0.0",
+    "csv-parser": "^3.2.0",
     "dotenv": "^16.4.7",
     "ioredis": "^5.4.2",
     "langchain": "^0.3.12",
+    "redis": "^4.7.0",
     "uuid": "^11.0.5",
     "zod": "^3.24.1"
   }
