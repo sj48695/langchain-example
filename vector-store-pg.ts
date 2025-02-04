@@ -1,27 +1,39 @@
+import {
+  DistanceStrategy,
+  PGVectorStore,
+} from "@langchain/community/vectorstores/pgvector";
 import { Document } from "@langchain/core/documents";
 import { OpenAIEmbeddings } from "@langchain/openai";
-import { RedisVectorStore } from "@langchain/redis";
 import csvParser from "csv-parser";
 import * as fs from "fs";
-import { MemoryVectorStore } from "langchain/vectorstores/memory";
-import { createClient } from "redis";
+import { PoolConfig } from "pg";
 
 async function main() {
-  // TODO: redis 필요(rediSearch 모듈을 지원하는 Redis 서버 필요, aws elasticache 사용 X)
-  const redisClient = createClient({
-    url: process.env.REDIS_URL ?? "redis://localhost:6379",
-  });
-  redisClient.connect();
-
   // ✅ Embedding 모델 생성
   const embeddings = new OpenAIEmbeddings();
 
-  // // ✅ RedisVectorStore 생성
-  // const vectorStore = new RedisVectorStore(embeddings, {
-  //   redisClient,
-  //   indexName: "langchainjs-testing",
-  // });
-  const vectorStore = new MemoryVectorStore(embeddings);
+  // Sample config
+  const config = {
+    postgresConnectionOptions: {
+      type: "postgres",
+      host: "127.0.0.1",
+      port: 5432,
+      user: "postgres.your-tenant-id",
+      password: "your-super-secret-and-long-postgres-password",
+      database: "postgres",
+    } as PoolConfig,
+    tableName: "testlangchainjs",
+    columns: {
+      idColumnName: "id",
+      vectorColumnName: "vector",
+      contentColumnName: "content",
+      metadataColumnName: "metadata",
+    },
+    // supported distance strategies: cosine (default), innerProduct, or euclidean
+    distanceStrategy: "cosine" as DistanceStrategy,
+  };
+
+  const vectorStore = await PGVectorStore.initialize(embeddings, config);
 
   /**
    * CSV 파일을 읽고 데이터를 배열로 변환하는 함수
@@ -50,20 +62,25 @@ async function main() {
   }
 
   /**
-   * 사용자별 데이터를 Embedding 후 RedisVectorStore에 저장
+   * 사용자별 데이터를 Embedding 후 MemoryVectorStore에 저장
    */
   async function storeUserData(userId: string, filePath: string) {
     const documents = await readCSV(userId, filePath);
 
     await vectorStore.addDocuments(documents);
-    console.log(`✅ ${userId}의 데이터 RedisVectorStore에 저장 완료`);
+    console.log(`✅ ${userId}의 데이터 MemoryVectorStore에 저장 완료`);
   }
 
   /**
    * 사용자별 데이터 검색 (유사한 문서 찾기)
    */
   async function searchUserData(userId: string, query: string) {
-    const filter = (doc: Document) => doc.metadata.userId === userId;
+    const filter = {
+      metadata: {
+        userId: { in: [userId] },
+      },
+    };
+    console.log("filter", filter);
     const results = await vectorStore.similaritySearch(query, 3, filter);
 
     console.log(`🔍 ${userId}의 [query: ${query}] 검색 결과:`, results);
@@ -75,8 +92,8 @@ async function main() {
     await searchUserData("B", "GPT 모델은 어떻게 작동하나요?");
   }
 
-  await storeUserData("A", "a_user_data.csv");
-  await storeUserData("B", "b_user_data.csv");
+  // await storeUserData("A", "a_user_data.csv");
+  // await storeUserData("B", "b_user_data.csv");
   searchExample();
 }
 
